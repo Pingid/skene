@@ -1,0 +1,11 @@
+{
+  "name": "webtorrent",
+  "scripts": {
+    "build": "esbuild --platform=node --bundle --external:node-gyp-build ./index.ts > index.js"
+  },
+  "dependencies": {
+    "torrent-search-api": "^2.1.4",
+    "utp-native": "^2.5.3",
+    "webtorrent": "^2.0.14"
+  }
+}

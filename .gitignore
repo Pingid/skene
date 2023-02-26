@@ -1,0 +1,15 @@
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+downloads
+.turbo
+plex
+transcode
+.env
+node_modules
+.DS_Store
+plex-media-server-aws
