@@ -1,0 +1,40 @@
+{
+  "name": "skene",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "url": "https://github.com/Pingid/skene.git"
+  },
+  "workspaces": [
+    "@client",
+    "@server",
+    "@aws",
+    "webtorrent"
+  ],
+  "scripts": {
+    "start": "pnpify node ./@server/dist/index.js",
+    "build": "yarn build:client && yarn build:server",
+    "build:client": "cd @client && yarn build",
+    "build:server": "cd @server && yarn build",
+    "dev:client": "cd @client && yarn dev",
+    "dev:server": "cd @server && yarn dev",
+    "dev": "docker compose -f docker-compose-dev.yml up",
+    "docker:client": "env IS_DOCKER=ture yarn dev:client",
+    "docker:server": "env IS_DOCKER=ture yarn dev:server"
+  },
+  "devDependencies": {
+    "@yarnpkg/pnpify": "^4.0.0-rc.39",
+    "prettier": "^2.8.4",
+    "turbo": "^1.8.2",
+    "typescript": "^5.0.0-beta"
+  },
+  "packageManager": "yarn@3.4.1",
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 120,
+    "trailingComma": "all"
+  }
+}

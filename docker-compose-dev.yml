@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  install:
+    image: node:latest
+    command: yarn install
+    working_dir: /usr/app/
+    volumes:
+      - ./:/usr/app/
+
+  client:
+    depends_on: [install]
+    image: node:latest
+    ports:
+      - '3000:3000'
+    command: yarn docker:client
+    working_dir: /usr/app/
+    environment:
+      - ENDPOINT_WS=${ENDPOINT_WS}
+    volumes:
+      - ./:/usr/app/
+
+  server:
+    depends_on: [install]
+    image: node:latest
+    ports:
+      - '3001:3001'
+      - '3002:3002'
+    command: yarn docker:server
+    working_dir: /usr/app/
+    volumes:
+      - ./:/usr/app/
